@@ -19,25 +19,53 @@
             </tr>
             <tr>
                 <td>The Hobbit</td>
-                <td>It's tde prequel in the series.</td>
+                <td>It's the prequel in the series.</td>
                 <td>J. R. R. Tolkien</td>
             </tr>
             <tr>
                 <td>The Fellowship of tde Ring</td>
-                <td>It's tde first book of the series</td>
+                <td>It's the first book of the series</td>
                 <td>J. R. R. Tolkien</td>
             </tr>
             <tr>
                 <td>The Two Towers</td>
-                <td>It's tde second book of the series</td>
+                <td>It's the second book of the series</td>
                 <td>J. R. R. Tolkien</td>
             </tr>
             <tr>
                 <td>The Return of tde King</td>
-                <td>It's tde final book in the series</td>
+                <td>It's the final book in the series</td>
                 <td>J. R. R. Tolkien</td>
             </tr>
         </table>
+        <hr>
+        <p>
+            In this Node.js code example you request a given URL, 
+            the static file server will listen for requests and try to find a file on the local filesystem. 
+            If no file is found or it doesn't exist, it returns a 404 error. 
+            The http module creates the server that listens on port 8000.
+        </p>
+        <pre>
+            const fileSystem = require('fs');
+            const http = require('http');
+
+            http.createServer((request, response) => {
+	            fileSystem.readFile(__dirname + request.url, (error, data) => {
+		            if (error) {
+			            response.writeHead(404, {
+				            'Content-Type': 'text/html'
+			            });
+			            response.end('404: File not found');
+		            } else {
+			            response.writeHead(200, {
+				            'Content-Type': 'text/html'
+			            });
+			            response.end(data);
+		            }   
+	            });
+            }).listen(8000); 
+        </pre>
+        <a href="https://code.pieces.app/collections/node-js">Code Source</a>
 
     </head>
 </html>
